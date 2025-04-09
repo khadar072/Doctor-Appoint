@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active{
+    @apply text-blue-700;
+}
+
+::-webkit-scrollbar{
+    @apply hidden;
+}
+
+@layer base {
+  :root {
+
+        --radius: 0.5rem
+    }
+}
