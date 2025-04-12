@@ -2,6 +2,8 @@ import { assets } from "@/assets/assets";
 import { UserContext } from "@/context/UserContext";
 import { NavLink, useNavigate } from "react-router-dom";
 import React, { useContext, useState } from "react";
+import DartMode from "./DartMode";
+
 
 
 const Navbar2 = () => {
@@ -22,7 +24,7 @@ const Navbar2 = () => {
     <div className="h-20 w-full  flex flex-col justify-center items-center">
 
         {/* right part */}
-      <div className=" w-full flex justify-between bg-blue-600  px-20">
+      <div className=" w-full flex justify-between dark:bg-gray-700 bg-blue-600  px-20">
         <div className="h-12  gap-0 flex ">
           <img src={assets.logo2} className="w-26 h-12 " alt="" />
           <div className=" flex flex-col text-white relative pt-2 ">
@@ -34,13 +36,13 @@ const Navbar2 = () => {
           <p className="text-white h-7 px-4 text-center rounded-xl font-semibold border">
             Welcome, {token ? userData.name : "Patient"}
           </p>
-         
+          <DartMode/>
         </div>
       </div>
 
 
       {/* left part */}
-      <div className="h-8 bg-white shadow-lg z-0 flex justify-center items-center w-full gap-6">
+      <div className="h-8 bg-white dark:bg-gray-900 dark:text-white shadow-lg z-0 flex justify-center items-center w-full gap-6">
       <div className="flex gap-4" >
         <NavLink to="/" className="hover:text-blue-700 font-semibold">
           Home

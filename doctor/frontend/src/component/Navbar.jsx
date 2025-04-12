@@ -1,189 +1,170 @@
 import React, { useContext, useState } from "react";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { UserContext } from "@/context/UserContext";
 import { toast } from "react-toastify";
+import { SearchIcon } from "lucide-react";
+import { MdLightMode } from "react-icons/md";
+import { BiMenuAltRight } from "react-icons/bi";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false); // For the profile dropdown
-  const { token, setToken ,userData} = useContext(UserContext);
+  const [open, setOpen] = React.useState(false); // For the profile dropdown
+  const { token, setToken, userData } = useContext(UserContext);
+  const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
-  const toggleMenu = () => setOpen(!open);
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen); // Toggle dropdown on click
+  // Toggle dropdown on click
 
   const logoutHandler = () => {
     // Simulate token removal (e.g., clear from localStorage)
-    localStorage.removeItem('token');
-    setToken('');
+    localStorage.removeItem("token");
+    setToken("");
     navigate("/");
-    toast.success('logout successfully')
+    toast.success("logout successfully");
   };
 
   return (
-    <div className="flex justify-between items-center w-full h-[70px] xl:h-[80px] border-b border-b-blue-600 relative">
-      {/* Logo */}
-      <img
-        className="cursor-pointer"
-        src={assets.logo || "/default-logo.png"}
-        width={160}
-        alt="Logo"
-        onClick={() => navigate("/")}
-      />
+    <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
+      <NavLink to="/" className="flex gap-1.5">
+        <img className="h-12" src={assets.logo2} alt="dummyLogoColored" />
+        <div className="relative text-blue-500">
+          <p className="font-semibold pt-1">Doctor</p>
+          <p className=" absolute top-5 font-semibold">Appointment</p>
+        </div>
+      </NavLink>
 
       {/* Desktop Menu */}
-      <div className="hidden sm:flex gap-4 justify-center items-center">
-        <ul className="flex gap-4 font-medium text-sm text-black">
-          <NavLink to="/" className="hover:text-blue-700">HOME</NavLink>
-          <NavLink to="/doctors" className="hover:text-blue-700">DOCTORS</NavLink>
-          <NavLink to="/about" className="hover:text-blue-700">ABOUT</NavLink>
-          <NavLink to="/contact" className="hover:text-blue-700">CONTACT</NavLink>
-        </ul>
+      <div className="hidden sm:flex items-center gap-8">
+        <NavLink className="text-blue-500 hover:text-blue-600" to="/">
+          Home
+        </NavLink>
+        <NavLink className="text-blue-500 hover:text-blue-600" to="/doctors">
+          Doctors
+        </NavLink>
+        {
+          token && <NavLink className="text-blue-500 hover:text-blue-600" to="/my-appointment">
+                     My-Appointment
+                   </NavLink>
+        }
+        <NavLink className="text-blue-500 hover:text-blue-600" to="/contact">
+          Contact
+        </NavLink>
 
-        {/* User Profile / Login Button */}
-        <div className="flex items-center gap-3">
-          {token ? (
-            <div className="relative flex items-center gap-1 cursor-pointer">
-              <img
-                className="w-10 h-10 rounded-full object-cover"
-                src={userData.image || "/default-profile.png"}
-                alt="Profile"
-                onClick={toggleDropdown} // Toggle dropdown on profile click
-              />
-              <MdKeyboardArrowDown onClick={toggleDropdown} />
-              {dropdownOpen && (
-                <div className="absolute top-12 right-0 bg-stone-100 rounded shadow-lg text-gray-600 z-20">
-                  <ul className="flex flex-col gap-2 p-3 min-w-[150px] font-medium">
-                    <li
-                      onClick={() => {
-                        setDropdownOpen(false);
-                        navigate("/profile");
-                      }}
-                      className="hover:text-black cursor-pointer"
-                    >
-                      My Profile
-                    </li>
-                    <li
-                      onClick={() => {
-                        setDropdownOpen(false);
-                        navigate("/my-appointment");
-                      }}
-                      className="hover:text-black cursor-pointer"
-                    >
-                      My Appointment
-                    </li>
-                    <li
-                      onClick={() => {
-                        setDropdownOpen(false);
-                        logoutHandler();
-                      }}
-                      className="hover:text-black cursor-pointer"
-                    >
-                      Logout
-                    </li>
-                  </ul>
-                </div>
-              )}
-            </div>
-          ) : (
-            <button
-              className="bg-blue-700 px-6 py-1 rounded text-white text-center"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
-          )}
+        <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
+          <input
+            className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500"
+            type="text"
+            placeholder="Search products"
+          />
+          <SearchIcon />
         </div>
+
+        <div className="relative cursor-pointer">
+          <MdLightMode size={25} className="text-blue-600" />
+        </div>
+
+        {token ? (
+          <div className="flex flex-col w-28 text-sm relative">
+            <button
+              onClick={() => setShowDropdown(!showDropdown)}
+              className="w-14 h-14 rounded-full text-left border bg-white text-gray-700 border-gray-300 shadow-sm hover:bg-gray-50 focus:outline-none"
+            >
+              <img
+                className="h-14 w-14 rounded-full"
+                src={userData.image}
+                alt="userImage1"
+              />
+            </button>
+
+            {showDropdown && (
+              <ul className="absolute w-44 bg-white border border-gray-300 rounded shadow-md mt-1 py-2 -right-8 top-[68px] z-10">
+                <li
+                  onClick={() => {
+                    navigate("/profile");
+                    setShowDropdown(false);
+                  }}
+                  className="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"
+                >
+                  Profile
+                </li>
+                <li
+                  onClick={() => {
+                    logoutHandler();
+                    setShowDropdown(false);
+                  }}
+                  className="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"
+                >
+                  Logout
+                </li>
+              </ul>
+            )}
+          </div>
+        ) : (
+          <button
+            onClick={() => navigate("/login")}
+            className="cursor-pointer px-8 py-2 bg-blue-500 hover:bg-blue-600 transition text-white rounded-full"
+          >
+            Login
+          </button>
+        )}
       </div>
 
-      {/* Mobile Menu Button */}
-      <div className="sm:hidden flex items-center gap-4">
-        <div className="flex items-center gap-1">
-          {/* Profile Section in Menu Button */}
-          {token ? (
-            <div className="relative flex items-center gap-1 cursor-pointer">
-              <img
-                className="w-10 h-10 rounded-full object-cover"
-                src={assets.profile || "/default-profile.png"}
-                alt="Profile"
-                onClick={toggleDropdown} // Toggle dropdown on profile click
-              />
-              <MdKeyboardArrowDown onClick={toggleDropdown} />
-              {dropdownOpen && (
-                <div className="absolute top-12 right-0 bg-stone-100 rounded shadow-lg text-gray-600 z-20">
-                  <ul className="flex flex-col gap-2 p-3 min-w-[150px] font-medium">
-                    <li
-                      onClick={() => {
-                        setDropdownOpen(false);
-                        navigate("/profile");
-                      }}
-                      className="hover:text-black cursor-pointer"
-                    >
-                      My Profile
-                    </li>
-                    <li
-                      onClick={() => {
-                        setDropdownOpen(false);
-                        navigate("/my-appointment");
-                      }}
-                      className="hover:text-black cursor-pointer"
-                    >
-                      My Appointment
-                    </li>
-                    <li
-                      onClick={() => {
-                        setDropdownOpen(false);
-                        logoutHandler();
-                      }}
-                      className="hover:text-black cursor-pointer"
-                    >
-                      Logout
-                    </li>
-                  </ul>
-                </div>
-              )}
-            </div>
-          ) : (
-            <button
-              className="bg-blue-700 px-6 py-1 rounded text-white text-center"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
-          )}
-        </div>
-        {/* Menu Icon */}
-        <img
-          className="w-8 cursor-pointer"
-          src={open ? assets.close || "/close-icon.png" : assets.menu || "/menu-icon.png"}
-          alt="Menu Icon"
-          onClick={toggleMenu}
-        />
-      </div>
+      <button
+        onClick={() => (open ? setOpen(false) : setOpen(true))}
+        aria-label="Menu"
+        className="sm:hidden"
+      >
+        {/* Menu Icon SVG */}
+        <BiMenuAltRight size={30} className="text-blue-600" />
+      </button>
 
       {/* Mobile Menu */}
       {open && (
-        <div className="absolute top-[70px] right-0 bg-white w-full h-screen z-50 shadow-lg p-4">
-          {/* Menu Links */}
-          <ul className="flex flex-col gap-4 font-medium text-lg text-gray-600">
-            <NavLink onClick={() => setOpen(false)} to="/" className="hover:text-blue-700">
-              HOME
-            </NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/doctors" className="hover:text-blue-700">
-              DOCTORS
-            </NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/about" className="hover:text-blue-700">
-              ABOUT
-            </NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/contact" className="hover:text-blue-700">
-              CONTACT
-            </NavLink>
-          </ul>
+        <div
+          className={`${
+            open ? "flex" : "hidden"
+          } absolute  top-[60px] left-0 w-full bg-white z-20 shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}
+        >
+          <NavLink to="/" onClick={() => setOpen(false)}>
+            Home
+          </NavLink>
+          <NavLink to="/doctors" onClick={() => setOpen(false)}>
+            Doctors
+          </NavLink>
+          <NavLink to="/contact" onClick={() => setOpen(false)}>
+            Contact
+          </NavLink>
+          {token ? (
+            <div className="flex gap-2  flex-col">
+              <NavLink to="/my-appointment" onClick={() => setOpen(false)}>
+                My-Appointment
+              </NavLink>
+              <NavLink to="/profile" onClick={() => setOpen(false)}>
+                Profile
+              </NavLink>
+              <button
+                onClick={() => {
+                  logoutHandler();
+                  setOpen(false); // Close the menu after logout
+                }}
+                className="cursor-pointer px-6 py-2 mt-2 bg-blue-500 hover:bg-blue-600 transition text-white rounded-lg text-sm"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => {navigate("/login")
+              setOpen(false)}
+              }
+              className="cursor-pointer px-6 py-2 mt-2 bg-blue-500 hover:bg-blue-600 transition text-white rounded-lg text-sm"
+            >
+              Login
+            </button>
+          )}
         </div>
       )}
-    </div>
+    </nav>
   );
 };
 

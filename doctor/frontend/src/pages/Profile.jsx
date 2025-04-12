@@ -74,14 +74,14 @@ const Profile = () => {
   
 
   return (
-    <div className="flex flex-col mt-6 px-10 gap-6">
-      <div className="flex gap-6">
+    <div className="flex flex-col mt-6 md:px-10 gap-6">
+      <div className="flex flex-col md:flex-row gap-6">
         {isEdit ? (
           <label htmlFor="image">
             <div>
               <img
                 src={image ? URL.createObjectURL(image) : userData.image}
-                className="w-56 border border-blue-500 object-cover"
+                className="w-full md:w-56 border border-blue-500 object-cover"
                 alt="Profile"
               />
             </div>
@@ -94,7 +94,7 @@ const Profile = () => {
           </label>
         ) : (
           <img
-            className="w-56 border border-blue-500 object-cover"
+            className="w-full md:w-56 border border-blue-500 object-cover"
             src={userData.image}
             alt="Profile"
           />
@@ -230,7 +230,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className="w-64">
+      <div className=" w-full md:w-64">
         <div className="flex flex-col gap-2 border border-blue-800 p-4 rounded-lg">
           <input
             type="password"
@@ -255,7 +255,7 @@ const Profile = () => {
           />
           <button
             onClick={changePassword}
-            className="bg-blue-800 text-center text-white py-2 rounded hover:bg-blue-900 transition"
+            className="bg-blue-600 text-center text-white py-2 rounded hover:bg-blue-600 transition"
           >
             Change
           </button>

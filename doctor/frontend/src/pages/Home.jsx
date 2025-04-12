@@ -12,10 +12,9 @@ import Hero from '@/component/Hero'
 const Home = () => {
   return (
     <div>
-      <Hero/>
-      {/* <Header/> */}
+      {/* <Hero/> */}
+      <Header/>
       <Speciality/>
-  
       <Topdoctors/>
       {/* <Middle/> */}
       <ContectUs/>

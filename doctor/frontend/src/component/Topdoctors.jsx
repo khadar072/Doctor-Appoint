@@ -20,12 +20,12 @@ const Topdoctors = () => {
         delivering exceptional healthcare.
       </p>
 
-      <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 xl:gap-4 pt-5 px-1 sm:px-0 cursor-pointer">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 xl:gap-4 pt-5 px-1 sm:px-0 cursor-pointer">
         {doctors.slice(0, 10).map((item, index) => (
           <div
             onClick={() => navigate(`/appointment/${item._id}`)}
             key={index}
-            className="border px-3 py-3 rounded-lg h-auto transition-transform transform duration-500 hover:-translate-y-2 hover:border-2 hover:border-blue-700"
+            className="border px-3 py-3 rounded-lg h-auto transition-transform transform duration-500 hover:-translate-y-2 hover:border-2 "
           >
             <div className="mb-1">
               <img

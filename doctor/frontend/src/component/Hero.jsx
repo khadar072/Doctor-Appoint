@@ -3,10 +3,10 @@ import { assets } from "../assets/assets";
 
 const Hero = () => {
   return (
-    <div className="bg-gray-100  relative  z-10 overflow-hidden max-h-[650px] xl:max-h-[800px] flex justify-center items-center">
+    <div className="bg-gray-100  relative dark:bg-gray-700  z-10 overflow-hidden max-h-[650px] xl:max-h-[800px] flex justify-center items-center">
       {/* Background Pattern */}
-      <div className="h-[600px] w-[600px] bg-blue-500  absolute -top-1/2 right-0 rounded-3xl rotate-45"></div>
-      <div className="h-[300px] w-[300px] absolute border-[30px] border-blue-500 -bottom-44 -left-28 xl:bottom-20 xl:left-10 rounded-3xl"></div>
+      <div className="h-[600px] dark:bg-gray-500 w-[600px] bg-blue-500  absolute -top-1/2 right-0 rounded-3xl rotate-45"></div>
+      <div className="h-[300px] dark:border-gray-500 w-[300px] absolute border-[30px] border-blue-500 -bottom-44 -left-28 xl:bottom-20 xl:left-10 rounded-3xl"></div>
 
       {/* Hero Section */}
       <div className="flex flex-col z-10 md:flex-row flex-wrap xl:gap-24 px-6 md:px-10 lg:px-20 xl:px-32">
@@ -15,7 +15,7 @@ const Hero = () => {
           <p className="text-3xl font-bold">
             Book Your Doctor <br /> Appointment Online
           </p>
-          <p className="text-sm mt-3 text-blue-700">
+          <p className="text-sm mt-3 dark:text-white text-blue-700">
             A healthcare Tomorrow Starts Today Schedule Your Appointment. Your
             wellness, Our Expertise. Set Up Your Appointment Today.
           </p>

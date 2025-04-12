@@ -184,56 +184,57 @@ export const specialityData = [
     { speciality: 'Otology', image: otology },
 ];
 
-export const Userscomment=[
+export const Userscomment = [
     {
-        name: 'khadar',
-        image: man,
-        rating:rating,
-        comment:'world-class care for everone. Our health System world-class care for everone. Our health System '
+      name: 'Khadar',
+      image: man,
+      rating: rating,
+      comment: 'Booking an appointment was so easy and fast. Really impressed with the service!'
     },
     {
-        name: 'bashka',
-        image: man1,
-        rating:rating,
-        comment:'world-class care for everone. Our health System '
+      name: 'Bashka',
+      image: man1,
+      rating: rating,
+      comment: 'I got connected with a doctor in just minutes. Very efficient and reliable system.'
     },
     {
-        name: 'maryan',
-        image: waman,
-        rating:rating,
-        comment:'world-class care for everone. Our health System '
+      name: 'Maryan',
+      image: waman,
+      rating: rating,
+      comment: 'Excellent experience! I love how smooth and simple everything was.i will say keep going.'
     },
     {
-        name: 'casho',
-        image: waman,
-        rating:rating,
-        comment:'world-class care for everone. Our health System '
+      name: 'Casho',
+      image: waman,
+      rating: rating,
+      comment: 'The reminders and updates kept me on track with my health. Great job! for all of you.'
     },
     {
-        name: 'raxmo',
-        image: waman,
-        rating:rating,
-        comment:'world-class care for everone. Our health System '
+      name: 'Raxmo',
+      image: waman,
+      rating: rating,
+      comment: 'I didn’t have to wait long at all. Everything was well-organized and user-friendly.'
     },
     {
-        name: 'maxamud',
-        image: man,
-        rating:rating,
-        comment:'world-class care for everone. Our health System '
+      name: 'Maxamud',
+      image: man,
+      rating: rating,
+      comment: 'A game-changer for busy people. I can manage my appointments anytime, anywhere.'
     },
     {
-        name: 'c/lahi',
-        image: man1,
-        rating:rating,
-        comment:'world-class care for everone. Our health System '
+      name: 'C/Lahi',
+      image: man1,
+      rating: rating,
+      comment: 'Very professional doctors and smooth booking process. Highly recommended!'
     },
     {
-        name: 'zaki',
-        image: man1,
-        rating:rating,
-        comment:'world-class care for everone. Our health System '
+      name: 'Zaki',
+      image: man1,
+      rating: rating,
+      comment: 'Simple, fast, and trustworthy. It’s the future of healthcare access of all our country!'
     },
-]
+  ];
+  
 
 
 

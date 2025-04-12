@@ -26,11 +26,13 @@ import Navbar2 from './component/Navbar2';
 
 const App = () => {
   return (
-    <div className='mx-4 sm:mx-[4%] xl:mx-[6%] m-auto'>
+    <div className=''>
       <ToastContainer/>
-      <Navbar2/>
+      <Navbar/>
+      {/* <Navbar2/> */}
       {/* <Hero/> */}
-      <Routes>
+     <div  className='mx-4 sm:mx-[4%] xl:mx-[6%] m-auto'>
+     <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/doctors' element={<Doctors/>}/>
         <Route path='/doctors/:speciality' element={<Doctors/>}/>
@@ -47,6 +49,7 @@ const App = () => {
         <Route path="/forgot-password" element={<Forgotpassword />} />
         <Route path="/reset-password/:id/:token" element={<Resetpassword />} />
       </Routes>
+     </div>
       <Footer/>
     </div>
   )
