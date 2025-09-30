@@ -20,7 +20,7 @@ const App = () => {
 
   const {atoken}=useContext(AdminContext)
   const {dtoken}=useContext(DoctorContext)
-  return atoken ||dtoken ?(
+  return atoken || dtoken ?(
     <div className='flex flex-col gap-0'>
       <Navbar/>
       <div className='flex'>

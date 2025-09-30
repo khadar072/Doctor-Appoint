@@ -43,7 +43,7 @@ const Appointment = () => {
         <div className="flex flex-col sm:flex-row gap-3 xl:gap-6 w-full">
           {/* Left side: Doctor's image */}
           <div className="w-full   sm:w-[35%] xl:w-[35%]  h-80 xl:h-96 xl flex mb-3 rounded-lg sm:mb-0 items-start bg-blue-300">
-            <img className='w-full h-full rounded-lg   ' src={doctor.image} alt={doctor.name} />
+            <img className='w-full h-full rounded-lg object-cover  ' src={doctor.image} alt={doctor.name} />
           </div>
           {/* Right side: Doctor's details */}
           <div className='flex-1 '>

@@ -90,7 +90,7 @@ const AddDoctor = () => {
           <div className="flex gap-2">
             <label htmlFor="doc-img">
               <img
-                src={docImage ? URL.createObjectURL(docImage) : assets.noUser} // Use placeholder or selected file
+                src={docImage ? URL.createObjectURL(docImage) : assets.noUser} 
                 className="w-16 border border-blue-600 bg-white pt-1 px-1"
                 alt="Doctor"
               />

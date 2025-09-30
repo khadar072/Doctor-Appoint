@@ -8,7 +8,7 @@ const Update = () => {
   const { atoken } = useContext(AdminContext);
   const navigate = useNavigate();
 
-  // Ensure all fields have default values to avoid uncontrolled input warning
+ 
   const [docData, setDocData] = useState({
     name: "",
     age: "",

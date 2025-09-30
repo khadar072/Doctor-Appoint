@@ -1,1 +1,11 @@
-/.vscode
+/.vscode# Dependencies
+/node_modules/
+doctor/backend/node_modules/
+doctor/frontend/node_modules/
+doctor/admin/node_modules/
+
+# Env files
+.env
+doctor/backend/.env
+doctor/frontend/.env
+doctor/admin/.env
